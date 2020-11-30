@@ -14,4 +14,5 @@ ingredients.each_with_index do |value, index|
   print '.' if (index % 5).zero?
 end
 
+puts ''
 puts 'All done'

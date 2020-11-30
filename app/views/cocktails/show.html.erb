@@ -1,0 +1,9 @@
+<div class="container w-80 mt-2">
+  <h1><%= @cocktail.name %></h1>
+  <%= link_to 'Back to list', cocktails_path, class: 'btn btn-link' %>
+  <ul class="list-group">
+    <% @cocktail.doses.each do |dose| %>
+      <li class="list-group-item"><%= dose.description.capitalize %> of <%= dose.ingredient.name.capitalize %></li>
+    <% end %>
+  </ul>
+</div>

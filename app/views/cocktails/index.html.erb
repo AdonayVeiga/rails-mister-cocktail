@@ -1,0 +1,11 @@
+<div class="container mt-2">
+  <h1>Have a drink</h1>
+  <%= link_to 'Add a cocktail', new_cocktail_path, class: 'btn btn-link' %>
+  <% @cocktails.each do |cocktail| %>
+    <div class="card card-boby my-1 p-1">
+      <h5 class="card-title"><%= cocktail.name.capitalize %></h5>
+      <p class="card-text"><%= cocktail.doses.size %> Igredients</p>
+      <%= link_to 'Details', cocktail_path(cocktail), class: 'btn btn-link' %>
+    </div>
+  <% end %>
+</div>
