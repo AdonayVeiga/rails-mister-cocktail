@@ -1,9 +1,17 @@
 <div class="container w-80 mt-2">
   <h1><%= @cocktail.name %></h1>
   <%= link_to 'Back to list', cocktails_path, class: 'btn btn-link' %>
+  <%= link_to 'Add an Ingredient', new_cocktail_dose_path(@cocktail), class: 'btn btn-link' %>
   <ul class="list-group">
     <% @cocktail.doses.each do |dose| %>
-      <li class="list-group-item"><%= dose.description.capitalize %> of <%= dose.ingredient.name.capitalize %></li>
+      <li class="list-group-item">
+        <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+            dose_path(dose),
+            method: :delete,
+            data: { confirm: 'Are you Sure?' },
+            class: 'btn btn-danger mr-3' %>
+        <%= dose.description.capitalize %> of <%= dose.ingredient.name.capitalize %>
+      </li>
     <% end %>
   </ul>
 </div>
