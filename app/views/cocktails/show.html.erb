@@ -1,7 +1,7 @@
 <div class="container w-80 mt-2">
   <h1><%= @cocktail.name %></h1>
   <%= link_to 'Back to list', cocktails_path, class: 'btn btn-link' %>
-  <%= link_to 'Add an Ingredient', new_cocktail_dose_path(@cocktail), class: 'btn btn-link' %>
+  <%#= link_to 'Add an Ingredient', new_cocktail_dose_path(@cocktail), class: 'btn btn-link' %>
   <ul class="list-group">
     <% @cocktail.doses.each do |dose| %>
       <li class="list-group-item">
@@ -14,4 +14,12 @@
       </li>
     <% end %>
   </ul>
+  <div class="container w-80 mt-2">
+    <h5>Add Ingredient</h5>
+    <%= simple_form_for [@cocktail,@dose] do |f| %>
+      <%= f.input :description, label: 'Quantity' %>
+      <%= f.input :ingredient_id, collection: @ingredients %>
+      <%= f.submit 'Add to Cocktail', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>
