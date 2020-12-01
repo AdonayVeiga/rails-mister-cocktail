@@ -3,10 +3,19 @@
   <%= link_to 'Add a cocktail', new_cocktail_path, class: 'btn btn-link' %>
   <div class="row">
     <% @cocktails.each do |cocktail| %>
-      <div class="card card-boby m-1 p-1 col-4">
-        <h5 class="card-title"><%= cocktail.name.capitalize %></h5>
-        <p class="card-text"><%= cocktail.doses.size %> Igredients</p>
-        <%= link_to 'Details', cocktail_path(cocktail), class: 'btn btn-link' %>
+      <div class="card m-1 p-1 col-2">
+        <% if cocktail.photo.attached? %>
+          <%= cl_image_tag cocktail.photo.key, class: 'card-img-top' %>
+        <% else %>
+          <div class="placeholder d-flex justify-content-center align-items-center">
+            <p>No photo</p>
+          </div>
+        <% end %>
+        <div class="card-boby">
+          <h5 class="card-title"><%= cocktail.name.capitalize %></h5>
+          <p class="card-text"><%= cocktail.doses.size %> Igredients</p>
+          <%= link_to 'Details', cocktail_path(cocktail), class: 'btn btn-link' %>
+        </div>
       </div>
     <% end %>
   </div>
